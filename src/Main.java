@@ -47,14 +47,14 @@ public class Main {
         padma.findBestPerson(markus);
         System.out.println();
         Slizerin grehem = new Slizerin("Грэхэм Монтегю", 20, 20, 20, 20,
-                20, 20, 99);
-        Slizerin gregori = new Slizerin("Грегори Гойл", 21, 21, 21, 21,
-                21, 21, 21);
+                20, 20, 20);
+        Slizerin gregori = new Slizerin("Грегори Гойл", 21, 21, 20, 20,
+                20, 20, 20);
         grehem.findBestPerson(gregori);
         System.out.println();
         Hogwarts ron = new Griffindor("Рон Уизли", 99, 12, 12, 12,
                 12);
-        Hogwarts drako = new Slizerin("Драко Малфой", 19, 19, 19, 19,
+        Hogwarts drako = new Slizerin("Драко Малфой", 99, 12, 19, 19,
                 19, 19, 19);
         ron.findBestPerson(drako);
     }

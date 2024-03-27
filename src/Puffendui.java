@@ -10,27 +10,9 @@ public class Puffendui extends Hogwarts {
         this.hardworking = hardworking;
         this.faithful = faithful;
         this.honest = honest;
-        checkErrorHardworking();
-        checkErrorFaithful();
-        checkErrorHonest();
-    }
-
-    public void checkErrorHardworking() {
-        if (this.hardworking <= 0 || this.hardworking > 100) {
-            throw new RuntimeException("Поле hardworking заполнено не корректно");
-        }
-    }
-
-    public void checkErrorFaithful() {
-        if (this.faithful <= 0 || this.faithful > 100) {
-            throw new RuntimeException("Поле faithful заполнено не корректно");
-        }
-    }
-
-    public void checkErrorHonest() {
-        if (this.honest <= 0 || this.honest > 100) {
-            throw new RuntimeException("Поле honest заполнено не корректно");
-        }
+        checkErrorСharacteristic(hardworking);
+        checkErrorСharacteristic(faithful);
+        checkErrorСharacteristic(honest);
     }
 
     @Override
@@ -47,8 +29,10 @@ public class Puffendui extends Hogwarts {
         System.out.println("У " + this.getFullName() + " сумма баллов равна " + sumOne + ", а у " + second.getFullName() + "– " + sumTwo);
         if (sumOne > sumTwo) {
             System.out.println(this.getFullName() + " лучший Пуффендуйец, чем " + second.getFullName());
-        } else {
+        } else if (sumOne < sumTwo) {
             System.out.println(second.getFullName() + " лучший Пуффендуйец, чем " + this.getFullName());
+        } else {
+            System.out.println("Ученики одинаковы по баллам");
         }
     }
 
@@ -57,10 +41,7 @@ public class Puffendui extends Hogwarts {
     }
 
     public void setHardworking(int hardworking) {
-        if (hardworking < 0 || hardworking > 100) {
-            System.out.println(hardworking + " параметр hardworking задан не корректно!");
-            return;
-        }
+        checkErrorСharacteristic(hardworking);
         this.hardworking = hardworking;
     }
 
@@ -69,10 +50,7 @@ public class Puffendui extends Hogwarts {
     }
 
     public void setFaithful(int faithful) {
-        if (faithful < 0 || faithful > 100) {
-            System.out.println(faithful + " параметр faithful задан не корректно!");
-            return;
-        }
+        checkErrorСharacteristic(faithful);
         this.faithful = faithful;
     }
 
@@ -81,10 +59,7 @@ public class Puffendui extends Hogwarts {
     }
 
     public void setHonest(int honest) {
-        if (honest < 0 || honest > 100) {
-            System.out.println(honest + " параметр honest задан не корректно!");
-            return;
-        }
+        checkErrorСharacteristic(honest);
         this.honest = honest;
     }
 }

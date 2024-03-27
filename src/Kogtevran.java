@@ -11,34 +11,10 @@ public class Kogtevran extends Hogwarts {
         this.wise = wise;
         this.witty = witty;
         this.fullOfCreativity = fullOfCreativity;
-        checkErrorSmart();
-        checkErrorWise();
-        checkErrorWitty();
-        checkErrorFullOfCreativity();
-    }
-
-    public void checkErrorFullOfCreativity() {
-        if (this.fullOfCreativity <= 0 || this.fullOfCreativity > 100) {
-            throw new RuntimeException("Поле fullOfCreativity заполнено не корректно");
-        }
-    }
-
-    public void checkErrorWitty() {
-        if (this.witty <= 0 || this.witty > 100) {
-            throw new RuntimeException("Поле witty заполнено не корректно");
-        }
-    }
-
-    public void checkErrorSmart() {
-        if (this.smart <= 0 || this.smart > 100) {
-            throw new RuntimeException("Поле smart заполнено не корректно");
-        }
-    }
-
-    public void checkErrorWise() {
-        if (this.wise <= 0 || this.wise > 100) {
-            throw new RuntimeException("Поле wise заполнено не корректно");
-        }
+        checkErrorСharacteristic(smart);
+        checkErrorСharacteristic(wise);
+        checkErrorСharacteristic(witty);
+        checkErrorСharacteristic(fullOfCreativity);
     }
 
     public void findBestPerson(Kogtevran second) {
@@ -47,8 +23,10 @@ public class Kogtevran extends Hogwarts {
         System.out.println("У " + this.getFullName() + " сумма баллов равна " + sumOne + ", а у " + second.getFullName() + "– " + sumTwo);
         if (sumOne > sumTwo) {
             System.out.println(this.getFullName() + " лучший Когтевранец, чем " + second.getFullName());
-        } else {
+        } else if (sumOne < sumTwo){
             System.out.println(second.getFullName() + " лучший Когтевранец, чем " + this.getFullName());
+        }else {
+            System.out.println("Ученики одинаковы по баллам");
         }
     }
 
@@ -66,10 +44,7 @@ public class Kogtevran extends Hogwarts {
     }
 
     public void setSmart(int smart) {
-        if (smart < 0 || smart > 100) {
-            System.out.println(smart + " параметр smart задан не корректно!");
-            return;
-        }
+       checkErrorСharacteristic(smart);
         this.smart = smart;
     }
 
@@ -78,10 +53,7 @@ public class Kogtevran extends Hogwarts {
     }
 
     public void setWise(int wise) {
-        if (wise < 0 || wise > 100) {
-            System.out.println(wise + " параметр wise задан не корректно!");
-            return;
-        }
+        checkErrorСharacteristic(wise);
         this.wise = wise;
     }
 
@@ -90,10 +62,7 @@ public class Kogtevran extends Hogwarts {
     }
 
     public void setWitty(int witty) {
-        if (witty < 0 || witty > 100) {
-            System.out.println(witty + " параметр witty задан не корректно!");
-            return;
-        }
+       checkErrorСharacteristic(witty);
         this.witty = witty;
     }
 
@@ -102,10 +71,7 @@ public class Kogtevran extends Hogwarts {
     }
 
     public void setFullOfCreativity(int fullOfCreativity) {
-        if (fullOfCreativity < 0 || fullOfCreativity > 100) {
-            System.out.println(fullOfCreativity + " параметр fullOfCreativity задан не корректно!");
-            return;
-        }
+        checkErrorСharacteristic(fullOfCreativity);
         this.fullOfCreativity = fullOfCreativity;
     }
 }

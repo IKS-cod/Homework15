@@ -1,4 +1,4 @@
-public class Hogwarts {
+public abstract class Hogwarts {
     private final String fullName;
     private int powerOfMagic;
     private int distanceTransgression;
@@ -7,29 +7,30 @@ public class Hogwarts {
         this.powerOfMagic = powerOfMagic;
         this.distanceTransgression = distanceTransgression;
         this.fullName = fullName;
-        checkErrorPowerOfMagic();
-        checkErrorDistanceTransgression();
+        checkErrorСharacteristic(powerOfMagic);
+        checkErrorСharacteristic(distanceTransgression);
+
     }
+
+    public void checkErrorСharacteristic(int characteristic) {
+        if (characteristic <= 0 || characteristic > 100) {
+            throw new RuntimeException("Поле заполнено не корректно");
+        }
+    }
+
     public void findBestPerson(Hogwarts second) {
-        int sumOne=this.getPowerOfMagic() + this.getDistanceTransgression() ;
-        int sumTwo=second.getPowerOfMagic() + second.getDistanceTransgression() ;
-        System.out.println("У "+ this.getFullName()+" сумма баллов равна "+ sumOne+", а у "+second.getFullName() +"– "+sumTwo);
-        if(sumOne>sumTwo){
+        int sumOne = this.getPowerOfMagic() + this.getDistanceTransgression();
+        int sumTwo = second.getPowerOfMagic() + second.getDistanceTransgression();
+        System.out.println("У " + this.getFullName() + " сумма баллов равна " + sumOne + ", а у " + second.getFullName() + "– " + sumTwo);
+        if (sumOne > sumTwo) {
             System.out.println(this.getFullName() + " обладает большей мощностью магии, чем " + second.getFullName());
-        }else {
+        } else if (sumOne < sumTwo) {
             System.out.println(second.getFullName() + " обладает большей мощностью магии, чем " + this.getFullName());
+        } else {
+            System.out.println("Ученики одинаковы по баллам");
         }
     }
-    public void checkErrorPowerOfMagic() {
-        if (this.powerOfMagic <= 0||this.powerOfMagic >100) {
-            throw new RuntimeException("Поле powerOfMagic заполнено не корректно");
-        }
-    }
-    public void checkErrorDistanceTransgression() {
-        if (this.distanceTransgression <= 0||this.distanceTransgression >100) {
-            throw new RuntimeException("Поле distanceTransgression заполнено не корректно");
-        }
-    }
+
     @Override
     public String toString() {
         return "ФИО -'" + fullName + '\'' +
@@ -58,20 +59,12 @@ public class Hogwarts {
     }
 
     public void setPowerOfMagic(int powerOfMagic) {
-        if (powerOfMagic < 0 || powerOfMagic > 100) {
-            System.out.println(powerOfMagic + " параметр powerOfMagic задан не корректно!");
-            return;
-        }
+        checkErrorСharacteristic(powerOfMagic);
         this.powerOfMagic = powerOfMagic;
     }
 
     public void setDistanceTransgression(int distanceTransgression) {
-        if (distanceTransgression < 0 || distanceTransgression > 100) {
-            System.out.println(distanceTransgression + " параметр distanceTransgression задан не корректно!");
-            return;
-        }
+        checkErrorСharacteristic(distanceTransgression);
         this.distanceTransgression = distanceTransgression;
-
-
     }
 }

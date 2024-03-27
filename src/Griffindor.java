@@ -9,40 +9,31 @@ public class Griffindor extends Hogwarts {
         this.nobility = nobility;
         this.honor = honor;
         this.bravery = bravery;
-        checkErrorNobility();
-        checkErrorHonor();
+        checkErrorСharacteristic(nobility);
+        checkErrorСharacteristic(honor);
+        checkErrorСharacteristic(bravery);
+
     }
-    public void checkErrorNobility() {
-        if (this.nobility <= 0||this.nobility >100) {
-            throw new RuntimeException("Поле nobility заполнено не корректно");
-        }
-    }
-    public void checkErrorHonor() {
-        if (this.honor <= 0||this.honor >100) {
-            throw new RuntimeException("Поле honor заполнено не корректно");
-        }
-    }
-    public void checkErrorBravery() {
-        if (this.bravery <= 0||this.bravery >100) {
-            throw new RuntimeException("Поле bravery заполнено не корректно");
-        }
-    }
+
     public void findBestPerson(Griffindor second) {
-        int sumOne=this.getNobility() + this.getHonor() + this.getBravery();
-        int sumTwo=second.getNobility() + second.getHonor() + second.getBravery();
-        System.out.println("У "+ this.getFullName()+" сумма баллов равна "+ sumOne+", а у "+second.getFullName() +"– "+sumTwo);
-        if(sumOne>sumTwo){
+        int sumOne = this.getNobility() + this.getHonor() + this.getBravery();
+        int sumTwo = second.getNobility() + second.getHonor() + second.getBravery();
+        System.out.println("У " + this.getFullName() + " сумма баллов равна " + sumOne + ", а у " + second.getFullName() + "– " + sumTwo);
+        if (sumOne > sumTwo) {
             System.out.println(this.getFullName() + " лучший Гриффиндорец, чем " + second.getFullName());
-        }else {
+        } else if (sumOne < sumTwo) {
             System.out.println(second.getFullName() + " лучший Гриффиндорец, чем " + this.getFullName());
+        }else {
+            System.out.println("Ученики одинаковы по баллам");
         }
     }
+
     @Override
     public String toString() {
-        return  super.toString()+
+        return super.toString() +
                 ", благородство -" + nobility +
                 ", честь -" + honor +
-                ", храбрость -" + bravery +'\'';
+                ", храбрость -" + bravery + '\'';
     }
 
 
@@ -51,10 +42,7 @@ public class Griffindor extends Hogwarts {
     }
 
     public void setNobility(int nobility) {
-        if (nobility < 0 || nobility > 100) {
-            System.out.println(nobility + " параметр nobility задан не корректно!");
-            return;
-        }
+       checkErrorСharacteristic(nobility);
         this.nobility = nobility;
     }
 
@@ -63,10 +51,7 @@ public class Griffindor extends Hogwarts {
     }
 
     public void setHonor(int honor) {
-        if (honor < 0 || honor > 100) {
-            System.out.println(honor + " параметр honor задан не корректно!");
-            return;
-        }
+       checkErrorСharacteristic(honor);
         this.honor = honor;
     }
 
@@ -75,10 +60,7 @@ public class Griffindor extends Hogwarts {
     }
 
     public void setBravery(int bravery) {
-        if (bravery < 0 || bravery > 100) {
-            System.out.println(bravery + " параметр bravery задан не корректно!");
-            return;
-        }
+       checkErrorСharacteristic(bravery);
         this.bravery = bravery;
     }
 }
